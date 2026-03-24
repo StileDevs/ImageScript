@@ -37,5 +37,9 @@
   "homepage": "https://github.com/matmen/ImageScript#readme",
   "engines": {
     "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.105.4",
+    "webpack-cli": "^7.0.2"
   }
 }
