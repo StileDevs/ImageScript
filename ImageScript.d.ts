@@ -320,6 +320,20 @@ export class Image {
    */
   flipY(): this;
 
+  /**
+   * Apply box blur to the image.
+   *
+   * @param radius The blur radius
+   */
+  blurBox(radius?: number): this;
+
+  /**
+   * Apply Gaussian blur to the image.
+   *
+   * @param radius The blur radius
+   */
+  blurGaussian(radius?: number): this;
+
   private __apply__(image: this | Frame): this | Frame;
 
   /**
