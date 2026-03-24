@@ -139,7 +139,7 @@ export class Image {
     y: number,
     width: number,
     height: number,
-    color: number | ColorFunction
+    color: number | ColorFunction,
   ): this;
 
   private __fast_box__(
@@ -147,7 +147,7 @@ export class Image {
     y: number,
     width: number,
     height: number,
-    color: number
+    color: number,
   ): this;
 
   /**
@@ -157,7 +157,7 @@ export class Image {
     x: number,
     y: number,
     radius: number,
-    color: number | ColorFunction
+    color: number | ColorFunction,
   ): this;
 
   /**
@@ -208,7 +208,7 @@ export class Image {
   private __set_channel_value__(
     value: number,
     absolute: boolean,
-    offset: number
+    offset: number,
   ): void;
 
   /**
@@ -278,7 +278,7 @@ export class Image {
   dominantColor(
     ignoreBlack?: boolean,
     ignoreWhite?: boolean,
-    bwThreshold?: number
+    bwThreshold?: number,
   ): number;
 
   /**
@@ -291,9 +291,14 @@ export class Image {
   rotate(angle: number, resize?: boolean): this;
 
   /**
-   * Flips / mirrors the image horizontally or vertically.
+   * Flips / mirrors the image horizontally (left-right).
    */
-  flip(direction: "horizontal" | "vertical"): this;
+  flipX(): this;
+
+  /**
+   * Flips / mirrors the image vertically (top-bottom).
+   */
+  flipY(): this;
 
   private __apply__(image: this | Frame): this | Frame;
 
@@ -332,7 +337,7 @@ export class Image {
    */
   async encode(
     compression?: PNGCompressionLevel,
-    metadata?: PNGMetadata
+    metadata?: PNGMetadata,
   ): Promise<Uint8Array>;
   async encode(metadata?: PNGMetadata): Promise<Uint8Array>;
 
@@ -389,7 +394,7 @@ export class Image {
   static async renderSVG(
     svg: string,
     size?: number,
-    mode?: SVGScaleMode
+    mode?: SVGScaleMode,
   ): Promise<Image>;
 
   /**
@@ -408,7 +413,7 @@ export class Image {
     scale: number,
     text: string,
     color?: number,
-    layout?: TextLayout
+    layout?: TextLayout,
   ): Promise<Image>;
 }
 
@@ -427,7 +432,7 @@ export class Frame extends Image {
   static get DISPOSAL_BACKGROUND(): "background";
 
   private static __convert_disposal_mode__(
-    mode: FrameDisposalModeName | FrameDisposalModeId
+    mode: FrameDisposalModeName | FrameDisposalModeId,
   ): FrameDisposalModeId;
 
   /**
@@ -446,7 +451,7 @@ export class Frame extends Image {
     duration: number,
     xOffset?: number,
     yOffset?: number,
-    disposalMode?: FrameDisposalModeName | FrameDisposalModeId
+    disposalMode?: FrameDisposalModeName | FrameDisposalModeId,
   );
 
   /**
@@ -477,7 +482,7 @@ export class Frame extends Image {
     duration?: number,
     xOffset?: number,
     yOffset?: number,
-    disposalMode?: FrameDisposalModeName | FrameDisposalModeId
+    disposalMode?: FrameDisposalModeName | FrameDisposalModeId,
   ): Frame;
 
   /**
@@ -488,7 +493,7 @@ export class Frame extends Image {
   resize(
     width: number,
     height: number,
-    mode?: typeof Image.RESIZE_NEAREST_NEIGHBOR | string
+    mode?: typeof Image.RESIZE_NEAREST_NEIGHBOR | string,
   ): Image;
 }
 
@@ -529,7 +534,7 @@ export class GIF extends Array<Frame> {
    */
   static async decode(
     data: Buffer | Uint8Array,
-    onlyExtractFirstFrame?: boolean
+    onlyExtractFirstFrame?: boolean,
   ): Promise<GIF>;
 
   /**
@@ -602,7 +607,7 @@ export class ImageType {
  */
 export function decode(
   data: Uint8Array | Buffer,
-  onlyExtractFirstFrame?: boolean
+  onlyExtractFirstFrame?: boolean,
 ): Promise<GIF | Image>;
 
 export type PNGMetadata = {
