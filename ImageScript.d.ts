@@ -236,6 +236,26 @@ export class Image {
   composite(source: this, x?: number, y?: number): this;
 
   /**
+   * Overlay/composite an image on top of this image without alpha blending (direct replacement).
+   * This is faster than composite() but doesn't blend semi-transparent pixels.
+   *
+   * @param source The image to overlay
+   * @param x The x coordinate to place the source image
+   * @param y The y coordinate to place the source image
+   */
+  overlayReplace(source: this, x?: number, y?: number): this;
+
+  /**
+   * Overlay/composite an image on top of this image with optimized alpha blending.
+   * This is an optimized version of composite() with better clipping and performance.
+   *
+   * @param source The image to overlay
+   * @param x The x coordinate to place the source image
+   * @param y The y coordinate to place the source image
+   */
+  overlayBlend(source: this, x?: number, y?: number): this;
+
+  /**
    * Inverts the image's colors.
    */
   invert(): this;
